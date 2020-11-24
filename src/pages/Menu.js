@@ -9,6 +9,7 @@ import logoPrn from '../assets/img/logoPrn.png'
 import IncluirCaso from './screen/IncluirCaso'
 import ExcluirCasos from './screen/ExcluirCasos'
 import ListarCasos from './screen/ListarCasos'
+import ListarRecados from './screen/ListarRecados'
 
 
 export default function Menu() {
@@ -39,8 +40,11 @@ export default function Menu() {
                 <div style={{ 'width': '120px','marginRight':'10px' }}>
                     <Paper>
                         <MenuList >
-                            <MenuItem onClick={() => setScreen(0)} >Recados</MenuItem>
-                            <div style={{ 'height': '10px' }}></div>
+                            <MenuItem onClick={() => setScreen(0)} >Pagina Inicial</MenuItem>
+                            <div style={{ 'height': '10px' }}><hr/></div>
+                            
+                            <MenuItem onClick={() => setScreen(4)}>Recados</MenuItem>
+                            <div style={{ 'height': '10px' }}><hr/></div>
                             <MenuItem onClick={() => setScreen(1)}>Incluir Caso</MenuItem>
                             <MenuItem onClick={() => setScreen(2)}>Excluir Caso</MenuItem>
                             <MenuItem onClick={() => setScreen(3)}>Listar Casos</MenuItem>
@@ -79,6 +83,9 @@ export default function Menu() {
                         }
                         {screen === 3&&
                             <ListarCasos setScreen={setScreen} />
+                        }
+                        {screen === 4&&
+                            <ListarRecados setScreen={setScreen} />
                         }
 
                     </div>

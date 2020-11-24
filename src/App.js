@@ -1,7 +1,9 @@
 import React from 'react'
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
+import { HashRouter } from 'react-router-dom'
 import Login from './pages/Login'
 import Menu from './pages/Menu'
+import incluirRecado from './pages/screen/IncluirRecado'
 
 
 export default function App() {
@@ -23,13 +25,14 @@ export default function App() {
 
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Switch>
         <Route path="/" exact={true} component={Login} />
+        <Route path="/Recado"  component={incluirRecado} />
         <PrivateRoute path="/menu" component={Menu} />
 
       </Switch>
 
-    </BrowserRouter>
+    </HashRouter>
   )
 }

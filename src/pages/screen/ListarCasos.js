@@ -20,13 +20,15 @@ export default function ListarCasos(props) {
             .database()
             .ref(`/ocorrencias`)
             .on('value', snapchot => {
-                // converter objetos em listas
-                let dados = snapchot.val()
-                const keys = Object.keys(dados)
-                const lista = keys.map((key) => {
-                    return { ...dados[key], id: key }
-                })
-                setLista(lista)
+                if (snapchot.val()) {
+                    // converter objetos em listas
+                    let dados = snapchot.val()
+                    const keys = Object.keys(dados)
+                    const lista = keys.map((key) => {
+                        return { ...dados[key], id: key }
+                    })
+                    setLista(lista)
+                }
             })
 
     }, [])
