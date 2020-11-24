@@ -1,5 +1,5 @@
 import React, { useState, useLayoutEffect } from 'react'
-import { Grid, Paper, } from '@material-ui/core';
+import { Grid, Paper,Button } from '@material-ui/core';
 // import AddCircleIcon from '@material-ui/icons/AddCircle';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -20,16 +20,27 @@ export default function ListarRecados(props) {
             .database()
             .ref(`/recados`)
             .on('value', snapchot => {
-                // converter objetos em listas
-                let dados = snapchot.val()
-                const keys = Object.keys(dados)
-                const lista = keys.map((key) => {
-                    return { ...dados[key], id: key }
-                })
-                setLista(lista)
+                if (snapchot.val()) {
+
+                    // converter objetos em listas
+                    let dados = snapchot.val()
+                    const keys = Object.keys(dados)
+                    const lista = keys.map((key) => {
+                        return { ...dados[key], id: key }
+                    })
+                    setLista(lista)
+                }
             })
 
     }, [])
+
+    const Excluir = (item) => {
+        console.log(item)
+        Firebase
+            .database()
+            .ref(`/recados/${item.id}`)
+            .remove()
+    }
 
 
     return (
@@ -47,6 +58,7 @@ export default function ListarRecados(props) {
                                 <TableCell style={{ color: '#fff' }}>Titulo</TableCell>
                                 <TableCell style={{ color: '#fff' }} align="right">E-mail</TableCell>
                                 <TableCell style={{ color: '#fff' }} align="center">Recado</TableCell>
+                                <TableCell style={{ color: '#fff' }} align="center">Opção</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -57,6 +69,8 @@ export default function ListarRecados(props) {
                                     </TableCell>
                                     <TableCell align="right">{item.email}</TableCell>
                                     <TableCell align="right">{item.recado}</TableCell>
+                                    <Button variant="outlined" onClick={() => Excluir(item)} style={{ marginLeft: '5px', backgroundColor: 'red', color: '#fff' }} > Excluir </Button>
+ 
                                 </TableRow>
                             }
                             )}
