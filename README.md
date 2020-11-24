@@ -1,10 +1,9 @@
 # Projeto Disciplina Tópicos Especiais em Programação
-## Criado Por Jean Marcos de Souza RA 1116403
+## Criado Por Jean Marcos de Souza  -  RA 1116403
 ## Contato: jiamarcos@outlook.com.br
 
 
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React JS
 
 ## Bibliotecas utilizadas:
 	@material-ui/core,
