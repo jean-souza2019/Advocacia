@@ -4,6 +4,7 @@ import { HashRouter } from 'react-router-dom'
 import Login from './pages/Login'
 import Menu from './pages/Menu'
 import incluirRecado from './pages/screen/IncluirRecado'
+import CriarUsuario from './pages/screen/CriarUsuario'
 
 
 export default function App() {
@@ -28,7 +29,8 @@ export default function App() {
     <HashRouter>
       <Switch>
         <Route path="/" exact={true} component={Login} />
-        <Route path="/Recado"  component={incluirRecado} />
+        <Route path="/Recado" component={incluirRecado} />
+        <Route path="/criarUser" component={CriarUsuario} />
         <PrivateRoute path="/menu" component={Menu} />
 
       </Switch>
